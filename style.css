@@ -60,6 +60,11 @@ html {
 p {
   color: rgb(172, 172, 172);
   font-size: larger;
+  transition: color 0.3s ease; /* Add a smooth transition for color changes */
+}
+
+p:hover {
+  color: #ff66b2;
 }
 
 /* TRANSITION */
@@ -141,6 +146,8 @@ a {
 .logo:hover {
   cursor: default;
 }
+
+
 
 /* HAMBURGER MENU */
 
@@ -258,6 +265,13 @@ section {
   height: 400px;
   width: 400px;
   margin: auto 0;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 1s; /* Delayed start */
+}
+
+.circular-profile-pic {
+  width: 100%;
+  border-radius: 50%;
 }
 
 .section__text {
@@ -271,16 +285,22 @@ section {
 
 .section__text__p1 {
   text-align: center;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 1s; /* Delayed start */
 }
 
 .section__text__p2 {
   font-size: 1.75rem;
   margin-bottom: 1rem;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 1s; /* Delayed start */
 }
 
 .title {
   font-size: 3rem;
   text-align: center;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 1s; /* Delayed start */
 }
 
 #socials-container {
@@ -288,6 +308,14 @@ section {
   justify-content: center;
   margin-top: 1rem;
   gap: 1rem;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 1s; /* Delayed start */
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }
 
 /* ICONS */
@@ -299,10 +327,26 @@ section {
 
 /* BUTTONS */
 
+@keyframes meteorDrop {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  90% {
+    opacity: 0.2; /* Keeps it hidden for most of the animation */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 .btn-container {
   display: flex;
   justify-content: center;
   gap: 1rem;
+  animation: meteorDrop 2s ease forwards;
 }
 
 .btn {
@@ -427,7 +471,7 @@ section {
 .details-container {
   padding: 1.5rem;
   flex: 1;
-  background: white;
+  background: rgb(255, 255, 255);
   border-radius: 2rem;
   border: rgb(53, 53, 53) 0.1rem solid;
   border-color: rgb(163, 163, 163);
@@ -529,6 +573,7 @@ article .icon {
   background: (250, 250, 250);
   margin: 2rem auto;
   padding: 0.5rem;
+  background-color: #f0f0f0;
 }
 
 .contact-info-container {
@@ -541,6 +586,7 @@ article .icon {
 
 .contact-info-container p {
   font-size: larger;
+  color: black;
 }
 
 .contact-icon {
