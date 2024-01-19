@@ -10,15 +10,43 @@
   </head>
   <body>
     <nav id="desktop-nav">
-      <div class="logo">Paulo Buan</div>
+      <div class="logo">
+        <img src="./assets/small-logo.png" alt="Small Logo">
+        Paulo Buan</div>
+      <script>
+        // JavaScript to add the "visible" class to trigger the animation
+        document.addEventListener('DOMContentLoaded', function() {
+            var logo = document.querySelector('.logo');
+            logo.classList.add('visible');
+        });
+    </script>
+    <div id="randomModal" class="modal hidden">
+      <img src="./assets/surprise.gif" alt="Random Gif" id="randomGif">
+      <audio id="randomMusic" controls class="hidden">
+          <source src="surprise.mp3" type="audio/mp3">
+          Your browser does not support the audio tag.
+      </audio>
+  </div>
+
       <div>
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
           <li><a href="#interests">Interests</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li><button class="btn btn-color-3" onclick="playSurprise()">
+            Don't Click!
+          </button></li>
         </ul>
       </div>
+      <div id="surpriseContainer" class="hidden">
+        <img src="./assets/surprise.gif" alt="Surprise Gif">
+        <audio id="surpriseAudio" controls>
+            <source src="./assets/surprise.mp3" type="audio/mp3">
+            Your browser does not support the audio tag.
+        </audio>
+    </div>
+    </div>
     </nav>
     <nav id="hamburger-nav">
       <div class="logo">Paulo Buan</div>
@@ -43,7 +71,7 @@
       <div class="section__text">
         <p class="section__text__p1">Hello, I'm</p>
         <h1 class="title">Paulo Buan</h1>
-        <p class="section__text__p2">Mapua MCL Student!</p>
+        <p class="section__text__p2">Embarking on tech adventures fueled by curiosity, <br>yet too lazy to resist the charm of innovation! 😎✨</p>
         <div class="btn-container">
           <button class="btn btn-color-1" onclick="location.href='./#contact'">
             Contact Info

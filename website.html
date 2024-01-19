@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pau Buan!</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <nav>
+        <div class ="navbar">Pau</div>
+        <div>
+            <ul class="nav-links">
+                <li><a href="#head-wrapper">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#interests">Interests</a></li>
+                <li><a href="#projects">Projects - Portfolio</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+            </ul>
+        </div>
+
+
+
+    </nav>
+    <script>
+        // Use JavaScript to show the container after the page is loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("head-wrapper").style.display = "flex";
+        });
+    </script>
+    <div class="container" id="head-wrapper">
+        <img src="dp.jpg" alt="Display Picture" class="profile-image">
+        <div class="text-content">
+            <h1 class="custom-h1-color">
+                <span style="color: #545455;">Hi,</span> I'm Paulo Buan.
+            </h1>
+            <br>
+            <h2>I'm a B.S. Computer Science student from <span class="custom-h2-color-red">Mapua</span> <span class="custom-h2-color-blue">Malayan Colleges Laguna</span>.</h2>
+            <p>Embarking on tech adventures fueled by curiosity, yet too lazy to resist the <span class="cursive-text">charm</span> of innovation! 😎✨</p>
+        </div>
+    </div>
+    
+
+    <div id="skills" class="fade-in">
+        <h2>🗣 Skills</h2>
+        <ul>
+            <li>Coding in Python, JavaScript, C, and C Sharp!</li>
+            <li>Mastering the art of procrastination</li>
+            <li>Making the perfect cup of coffee (according to my cat)</li>
+        </ul>
+    </div>
+
+    <div id="interests" class="fade-in">
+        <h2>✨ Interests</h2>
+        <ul>
+            <li>Playing Video Games! 🎮</li>
+            <li>Watching cat videos on the internet 🐈‍⬛</li>
+            <li>Binging novels and movies~!🍿</li>
+        </ul>
+    </div>
+
+    <div id="projects" class="fade-in">
+        <h2>📓 Projects</h2>
+        <ul>
+            <li>Building a time machine out of cardboard</li>
+            <li>Creating a robot to fetch snacks from the kitchen</li>
+            <li>Writing a book on "The Philosophy of Socks"</li>
+        </ul>
+    </div>
+
+    <div id="achievements" class="fade-in">
+        <h2>🏅 Achievements</h2>
+        <div class="achievement">Survived a week without coffee</div>
+        <div class="achievement">Learned to juggle with three marshmallows</div>
+    </div>
+
+    <button id="surpriseButton" onclick="playSurprise()">DONT CLICK!</button>
+
+<div id="surpriseContainer" class="hidden">
+    <img src="surprise.gif" alt="Surprise Gif">
+    <audio id="surpriseAudio" controls>
+        <source src="surprise.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+</div>
+
+<script src="scripts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+
+<footer id="funFooter">
+    <p>Thanks for visiting my website! 🎉</p>
+</footer>
+
+</body>
+</html>
