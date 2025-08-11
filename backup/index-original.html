@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PauBuan's website</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+  </head>
+  <body>
+    <nav id="desktop-nav">
+      <div class="logo">
+        <img src="./assets/small-logo.png" alt="Small Logo">
+        Paulo Buan</div>
+      <script>
+        // JavaScript to add the "visible" class to trigger the animation
+        document.addEventListener('DOMContentLoaded', function() {
+            var logo = document.querySelector('.logo');
+            logo.classList.add('visible');
+        });
+    </script>
+    <div id="randomModal" class="modal hidden">
+      <img src="./assets/surprise.gif" alt="Random Gif" id="randomGif">
+      <audio id="randomMusic" controls class="hidden">
+          <source src="surprise.mp3" type="audio/mp3">
+          Your browser does not support the audio tag.
+      </audio>
+  </div>
+
+      <div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#interests">Interests</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><button class="btn btn-color-3" onclick="playSurprise()">
+            Don't Click!
+          </button></li>
+        </ul>
+      </div>
+      <div id="surpriseContainer" class="hidden">
+        <img src="./assets/surprise.gif" alt="Surprise Gif">
+        <audio id="surpriseAudio" controls>
+            <source src="./assets/surprise.mp3" type="audio/mp3">
+            Your browser does not support the audio tag.
+        </audio>
+    </div>
+    </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo">Paulo Buan</div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#interests" onclick="toggleMenu()">Interests</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </div>
+      </div>
+    </nav>
+    <section id="profile">
+      <div class="section__pic-container">
+        <img src="./assets/profile-pic.jpg" alt="Paulo Buan profile picture" class="circular-profile-pic" />
+      </div>
+      <div class="section__text">
+        <p class="section__text__p1">Hello, I'm</p>
+        <h1 class="title">Paulo Buan</h1>
+        <p class="section__text__p2">Embarking on tech adventures fueled by curiosity, <br>yet too lazy to resist the charm of innovation! 😎✨</p>
+        <div class="btn-container">
+          <button class="btn btn-color-1" onclick="location.href='./#contact'">
+            Contact Info
+          </button>
+        </div>
+        <div id="socials-container">
+          <img
+            src="./assets/github.png"
+            alt="My Github profile"
+            class="icon"
+            onclick="location.href='https://github.com/PauBuan'"
+          />
+        </div>
+      </div>
+    </section>
+    <section id="about">
+      <p class="section__text__p1">Curious?</p>
+      <h1 class="title">About Me</h1>
+      <div class="section-container">
+        <div class="section__pic-container">
+          <img
+            src="./assets/about-pic.jpg"
+            alt="Profile picture"
+            class="about-pic"
+          />
+        </div>
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container">
+              <img
+                src="./assets/experience.png"
+                alt="Achievement Icon"
+                class="icon"
+              />
+              <h3>Achievements</h3>
+              <p>Dean's Lister of Mapua MCL <br />JPCS Vice President 2022-2023</p>
+            </div>
+            <div class="details-container">
+              <img
+                src="./assets/education.png"
+                alt="Education icon"
+                class="icon"
+              />
+              <h3>Education</h3>
+              <p>Currently a student in B.S Computer Science</p>
+            </div>
+          </div>
+          <div class="text-container">
+            <p>
+            I am Paulo Buan, a dedicated individual with a passion for technology and gaming. Currently pursuing a degree in computer science at Mapua MCL, I also hold the position of Vice President at JPCS. As a collegiate gamer, I find joy in navigating both the digital landscapes of gaming and the intricate world of coding. I am committed to academic excellence and contributing meaningfully to the field of computer science.
+            </p>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#interests'"
+      />
+    </section>
+    <section id="interests">
+      <p class="section__text__p1">Explore My</p>
+      <h1 class="title">Interests</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container">
+            <h2 class="experience-sub-title">Hobbies</h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="./assets/lol-icon.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>League of Legends</h3>
+                  <p>Master</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/book-icon.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Novels</h3>
+                  <p>Long and Light ones</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/comic.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Comics</h3>
+                  <p>reading!</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/uf-icon.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Ultimate Frisbee</h3>
+                  <p>newbie</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/game-design.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Game Designing</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/anita.webp"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Anita Max Wynn</h3>
+                  <p>Anita Max Wynn</p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="details-container">
+            <h2 class="experience-sub-title">Programming Languages I use!</h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Python</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>C, C++</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>C#</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>JavaScript</h3>
+                  <p>Basic</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#projects'"
+      />
+    </section>
+    <section id="projects">
+      <p class="section__text__p1">Browse My Recent</p>
+      <h1 class="title">Projects</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/4p.png"
+                alt="Project 1"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">4 pictures 1 Word</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://drive.google.com/file/d/1VPiqLuKEfBSsX31exRcd7ezJM-cajD2O/view?usp=sharing'"
+              >
+                Google Drive
+              </button>
+              
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/neonsprint.png"
+                alt="Project 2"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">Neon Sprint</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://drive.google.com/file/d/165JfdJZa-MlV4eaFCqEgkILlwo78IwwA/view?usp=sharing'"
+              >
+                Google Drive
+              </button>
+              
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/mqicon.png"
+                alt="Project 3"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">MerchQuest (Prototype)</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://drive.google.com/file/d/1a3RdX8w_OlI-ufOwliU7yDMozlWPpCe2/view?usp=sharing'"
+              >
+                Google Drive
+              </button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#contact'"
+      />
+    </section>
+    <section id="contact">
+      <p class="section__text__p1">Get in Touch</p>
+      <h1 class="title">Contact Me</h1>
+      <div class="contact-info-upper-container">
+        <img src="./assets/kuromigif2.gif" alt="Kuromigif1" style="width: 40%;" loop="infinite"/>
+        <div class="contact-info-container">
+          
+          <img
+            src="./assets/email.png"
+            alt="Email icon"
+            class="icon contact-icon email-icon"
+          />
+          <p style="color: black;"><a href="mailto:jpaulo.buan@gmail.com">jpaulo.buan@gmail.com</a></p>
+        </div>
+        <div class="contact-info-container">
+          <img
+            src="./assets/github.png"
+            alt="LinkedIn icon"
+            class="icon contact-icon"
+          />
+          <p style="color: black;"><a href="https://github.com/PauBuan">Github</a></p>
+        </div>
+        <img src="./assets/kuromigif1.gif" alt="Kuromigif1" style="width: 30%;" loop="infinite"/>
+      </div>
+    </section>
+    <footer>
+      <nav>
+        <div class="nav-links-container">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#interests">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p>Copyright &#169; 2023 Paulo Buan. I am still here.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

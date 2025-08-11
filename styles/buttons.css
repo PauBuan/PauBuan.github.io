@@ -1,0 +1,238 @@
+/* Button Component Styles */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-base);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  min-width: 120px;
+}
+
+/* Primary Button */
+.btn--primary {
+  background-color: var(--accent-crimson);
+  color: var(--primary-white);
+  box-shadow: 0 4px 15px rgba(220, 20, 60, 0.3);
+}
+
+.btn--primary:hover {
+  background-color: #b91c5c;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(220, 20, 60, 0.4);
+  color: var(--primary-white);
+}
+
+.btn--primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(220, 20, 60, 0.3);
+}
+
+/* Secondary Button */
+.btn--secondary {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--text-primary);
+}
+
+.btn--secondary:hover {
+  background-color: var(--text-primary);
+  color: var(--primary-white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px var(--shadow-medium);
+}
+
+/* Outline Button */
+.btn--outline {
+  background-color: transparent;
+  color: var(--accent-crimson);
+  border: 2px solid var(--accent-crimson);
+}
+
+.btn--outline:hover {
+  background-color: var(--accent-crimson);
+  color: var(--primary-white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(220, 20, 60, 0.3);
+}
+
+/* Ghost Button */
+.btn--ghost {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.btn--ghost:hover {
+  background-color: var(--background-secondary);
+  color: var(--accent-crimson);
+}
+
+/* Button Sizes */
+.btn--sm {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-sm);
+  min-width: 100px;
+}
+
+.btn--lg {
+  padding: var(--spacing-lg) var(--spacing-2xl);
+  font-size: var(--font-lg);
+  min-width: 160px;
+}
+
+/* Button with Icon */
+.btn--icon {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.btn__icon {
+  width: 20px;
+  height: 20px;
+  transition: transform var(--transition-base);
+}
+
+.btn:hover .btn__icon {
+  transform: translateX(2px);
+}
+
+/* Floating Action Button */
+.btn--floating {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  position: fixed;
+  bottom: var(--spacing-xl);
+  right: var(--spacing-xl);
+  z-index: var(--z-overlay);
+  box-shadow: 0 4px 20px var(--shadow-medium);
+  padding: 0;
+  min-width: auto;
+}
+
+.btn--floating:hover {
+  transform: scale(1.1);
+}
+
+/* Button Groups */
+.btn-group {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+.btn-group--vertical {
+  flex-direction: column;
+}
+
+.btn-group--center {
+  justify-content: center;
+}
+
+/* Loading State */
+.btn--loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.btn--loading::after {
+  content: '';
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: var(--radius-full);
+  animation: spin 1s linear infinite;
+  margin-left: var(--spacing-sm);
+}
+
+/* Disabled State */
+.btn:disabled,
+.btn--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Special Effects */
+.btn--shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn--shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left var(--transition-slow);
+}
+
+.btn--shimmer:hover::before {
+  left: 100%;
+}
+
+/* Animations */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.btn--pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: var(--font-sm);
+    min-width: 100px;
+  }
+  
+  .btn--lg {
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: var(--font-base);
+    min-width: 140px;
+  }
+  
+  .btn-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn-group .btn {
+    width: 100%;
+  }
+}
