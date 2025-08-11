@@ -5,7 +5,7 @@
   --primary-black: #000000;
   --accent-crimson: #DC143C;
   
-  /* Utility Colors */
+  /* Light Mode Colors */
   --text-primary: var(--primary-black);
   --text-secondary: #666666;
   --text-light: #999999;
@@ -14,6 +14,17 @@
   --border-light: #E5E5E5;
   --shadow-light: rgba(0, 0, 0, 0.1);
   --shadow-medium: rgba(0, 0, 0, 0.15);
+  
+  /* Dark Mode Colors */
+  --dark-bg-primary: #0F0F0F;
+  --dark-bg-secondary: #1A1A1A;
+  --dark-bg-tertiary: #2A2A2A;
+  --dark-text-primary: #FFFFFF;
+  --dark-text-secondary: #B3B3B3;
+  --dark-text-light: #808080;
+  --dark-border: #333333;
+  --dark-shadow-light: rgba(255, 255, 255, 0.05);
+  --dark-shadow-medium: rgba(255, 255, 255, 0.1);
   
   /* Typography */
   --font-family: "Poppins", sans-serif;
@@ -71,4 +82,30 @@
   --z-modal: 20;
   --z-navigation: 30;
   --z-tooltip: 40;
+}
+
+/* Dark Mode Theme */
+[data-theme="dark"] {
+  --text-primary: var(--dark-text-primary);
+  --text-secondary: var(--dark-text-secondary);
+  --text-light: var(--dark-text-light);
+  --background-primary: var(--dark-bg-primary);
+  --background-secondary: var(--dark-bg-secondary);
+  --border-light: var(--dark-border);
+  --shadow-light: var(--dark-shadow-light);
+  --shadow-medium: var(--dark-shadow-medium);
+}
+
+/* Automatic dark mode based on system preference */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --text-primary: var(--dark-text-primary);
+    --text-secondary: var(--dark-text-secondary);
+    --text-light: var(--dark-text-light);
+    --background-primary: var(--dark-bg-primary);
+    --background-secondary: var(--dark-bg-secondary);
+    --border-light: var(--dark-border);
+    --shadow-light: var(--dark-shadow-light);
+    --shadow-medium: var(--dark-shadow-medium);
+  }
 }

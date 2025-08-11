@@ -133,12 +133,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 1rem 1.5rem;
 }
 
 .mobile-nav__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   font-size: var(--font-xl);
   font-weight: var(--font-weight-semibold);
   color: var(--text-primary);
+}
+
+.mobile-nav__logo img {
+  border-radius: var(--radius-full);
+  transition: transform var(--transition-base);
 }
 
 /* Hamburger Menu */
@@ -180,9 +189,11 @@
   background-color: var(--background-primary);
   z-index: var(--z-overlay);
   transition: all var(--transition-base);
-  transform: translateY(-100%);
+  transform: translateY(0);
   opacity: 0;
   visibility: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 -4px 20px var(--shadow-medium);
 }
 
 .mobile-menu.active {
@@ -195,21 +206,38 @@
   padding: var(--spacing-2xl) var(--spacing-xl);
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xl);
+  gap: 0;
 }
 
 .mobile-menu__link {
-  font-size: var(--font-xl);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: var(--font-lg);
   font-weight: var(--font-weight-medium);
   color: var(--text-primary);
-  padding: var(--spacing-md) 0;
+  padding: 1.25rem 0;
   border-bottom: 1px solid var(--border-light);
   transition: all var(--transition-base);
+  border-radius: var(--radius-md);
+  margin-bottom: 0.5rem;
 }
 
 .mobile-menu__link:hover {
   color: var(--accent-crimson);
-  padding-left: var(--spacing-md);
+  background: var(--background-secondary);
+  padding-left: var(--spacing-lg);
+  transform: translateX(0.5rem);
+}
+
+.mobile-menu__link svg {
+  opacity: 0.7;
+  transition: all var(--transition-base);
+}
+
+.mobile-menu__link:hover svg {
+  opacity: 1;
+  color: var(--accent-crimson);
 }
 
 /* Responsive Design */

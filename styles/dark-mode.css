@@ -1,0 +1,122 @@
+/* Dark Mode Styles */
+
+/* Dark mode theme toggle button */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: var(--z-navigation);
+  background: var(--background-secondary);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-full);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px var(--shadow-medium);
+}
+
+.theme-toggle svg {
+  width: 24px;
+  height: 24px;
+  color: var(--text-primary);
+  transition: all var(--transition-base);
+}
+
+/* Dark mode specific adjustments */
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+[data-theme="dark"] .hero__image-container {
+  background: linear-gradient(135deg, var(--dark-bg-secondary), var(--dark-bg-tertiary));
+  border: 2px solid var(--dark-border);
+}
+
+[data-theme="dark"] .project-card {
+  background: var(--dark-bg-secondary);
+  border: 1px solid var(--dark-border);
+}
+
+[data-theme="dark"] .project-card:hover {
+  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+  border-color: var(--accent-crimson);
+}
+
+[data-theme="dark"] .interest-card {
+  background: var(--dark-bg-secondary);
+  border: 1px solid var(--dark-border);
+}
+
+[data-theme="dark"] .stat-card {
+  background: var(--dark-bg-secondary);
+  border: 1px solid var(--dark-border);
+}
+
+[data-theme="dark"] .navbar {
+  background: rgba(15, 15, 15, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--dark-border);
+}
+
+[data-theme="dark"] .mobile-nav {
+  background: var(--dark-bg-primary);
+  border-bottom: 1px solid var(--dark-border);
+}
+
+[data-theme="dark"] .mobile-menu {
+  background: var(--dark-bg-primary);
+  border-top: 1px solid var(--dark-border);
+}
+
+[data-theme="dark"] .btn--primary {
+  background: var(--accent-crimson);
+  color: var(--primary-white);
+}
+
+[data-theme="dark"] .btn--outline {
+  border-color: var(--dark-border);
+  color: var(--dark-text-primary);
+}
+
+[data-theme="dark"] .btn--outline:hover {
+  background: var(--dark-bg-secondary);
+  border-color: var(--accent-crimson);
+}
+
+[data-theme="dark"] .contact-item {
+  border: 1px solid var(--dark-border);
+}
+
+[data-theme="dark"] .contact-item:hover {
+  background: var(--dark-bg-secondary);
+  border-color: var(--accent-crimson);
+}
+
+[data-theme="dark"] .footer {
+  background: var(--dark-bg-secondary);
+  border-top: 1px solid var(--dark-border);
+}
+
+/* Mobile theme toggle adjustments */
+@media screen and (max-width: 768px) {
+  .theme-toggle {
+    top: 15px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+  }
+  
+  .theme-toggle svg {
+    width: 20px;
+    height: 20px;
+  }
+}

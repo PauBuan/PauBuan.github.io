@@ -305,6 +305,7 @@
   gap: var(--spacing-md);
   margin-bottom: var(--spacing-4xl);
   flex-wrap: wrap;
+  padding: 0 var(--spacing-lg);
 }
 
 .filter-btn {
@@ -316,6 +317,10 @@
   font-weight: var(--font-weight-medium);
   cursor: pointer;
   transition: all var(--transition-base);
+  font-size: var(--font-sm);
+  min-width: 100px;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .filter-btn:hover,
@@ -323,6 +328,8 @@
   background-color: var(--accent-crimson);
   color: var(--primary-white);
   border-color: var(--accent-crimson);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(220, 20, 60, 0.3);
 }
 
 /* Responsive Design */
@@ -347,10 +354,18 @@
   
   .portfolio__filters {
     gap: var(--spacing-sm);
+    padding: 0 var(--spacing-md);
+    justify-content: center;
   }
   
   .filter-btn {
-    padding: var(--spacing-xs) var(--spacing-md);
-    font-size: var(--font-sm);
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    min-width: 80px;
+    border-radius: var(--radius-lg);
+  }
+  
+  .filter-btn:active {
+    transform: scale(0.95);
   }
 }

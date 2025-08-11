@@ -7,6 +7,7 @@ class PortfolioApp {
   init() {
     this.setupEventListeners();
     this.initializeComponents();
+    this.initTheme();
     this.handlePageLoad();
   }
 
@@ -19,6 +20,7 @@ class PortfolioApp {
       this.initPortfolioFilter();
       this.initContactForm();
       this.initProjectModals();
+      this.initThemeToggle();
     });
 
     // Window events
@@ -31,6 +33,64 @@ class PortfolioApp {
     this.navigation = new Navigation();
     this.portfolio = new Portfolio();
     this.animations = new Animations();
+    this.theme = new ThemeManager();
+  }
+
+  initTheme() {
+    // Initialize theme based on saved preference or system preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const initialTheme = savedTheme || systemPreference;
+    
+    document.documentElement.setAttribute('data-theme', initialTheme);
+  }
+
+  initThemeToggle() {
+    const themeToggle = document.getElementById('themeToggle');
+    if (!themeToggle) return;
+    
+    const sunIcon = themeToggle.querySelector('.sun-icon');
+    const moonIcon = themeToggle.querySelector('.moon-icon');
+    
+    // Update icons based on current theme
+    this.updateThemeIcons();
+    
+    themeToggle.addEventListener('click', () => {
+      this.toggleTheme();
+    });
+  }
+
+  toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    
+    this.updateThemeIcons();
+    
+    // Add transition effect
+    document.body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+    setTimeout(() => {
+      document.body.style.transition = '';
+    }, 300);
+  }
+
+  updateThemeIcons() {
+    const themeToggle = document.getElementById('themeToggle');
+    if (!themeToggle) return;
+    
+    const sunIcon = themeToggle.querySelector('.sun-icon');
+    const moonIcon = themeToggle.querySelector('.moon-icon');
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    
+    if (currentTheme === 'dark') {
+      sunIcon.style.display = 'none';
+      moonIcon.style.display = 'block';
+    } else {
+      sunIcon.style.display = 'block';
+      moonIcon.style.display = 'none';
+    }
   }
 
   handlePageLoad() {
@@ -372,10 +432,76 @@ function playSurprise() {
     button.textContent = "You found it! 🎉";
     button.disabled = true;
     
-    // Create confetti effect
-    createConfetti();
+    // Play sound if available
+    const audio = document.getElementById('surpriseAudio');
+    if (audio) {
+      audio.play().catch(e => console.log('Audio play failed:', e));
+    }
+    
+    // Show gif animation
+    const surpriseContainer = document.getElementById('surpriseContainer');
+    if (surpriseContainer) {
+      surpriseContainer.classList.remove('hidden');
+      setTimeout(() => {
+        surpriseContainer.classList.add('hidden');
+        button.textContent = "Don't Click! 🎉";
+        button.disabled = false;
+      }, 5000);
+    }
   }
 }
+
+// Theme Manager Class
+class ThemeManager {
+  constructor() {
+    this.init();
+  }
+
+  init() {
+    this.loadTheme();
+    this.setupSystemThemeListener();
+  }
+
+  loadTheme() {
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    } else {
+      // Use system preference
+      const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', systemPreference);
+    }
+  }
+
+  setupSystemThemeListener() {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('portfolio-theme')) {
+        // Only follow system if user hasn't set a preference
+        document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+      }
+    });
+  }
+
+  toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('portfolio-theme', newTheme);
+    
+    return newTheme;
+  }
+
+  setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('portfolio-theme', theme);
+  }
+}
+
+// Initialize the portfolio app when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  new PortfolioApp();
+});
 
 function createConfetti() {
   const colors = ['#DC143C', '#FF69B4', '#FFD700', '#32CD32', '#87CEEB'];
@@ -424,9 +550,6 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
-
-// Initialize the application
-const app = new PortfolioApp();
 
 // Expose functions globally for HTML onclick handlers
 window.playSurprise = playSurprise;

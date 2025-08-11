@@ -35,6 +35,23 @@
     <link rel="preload" href="./styles/main.css" as="style">
 </head>
 <body>
+    <!-- Dark Mode Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="display: none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
     <!-- Navigation -->
     <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="navbar__container">
@@ -70,7 +87,10 @@
     <!-- Mobile Navigation -->
     <nav class="mobile-nav" role="navigation" aria-label="Mobile navigation">
         <div class="mobile-nav__container">
-            <div class="mobile-nav__logo">Paulo Buan</div>
+            <div class="mobile-nav__logo">
+                <img src="./assets/small-logo.png" alt="Paulo Buan Logo" width="30" height="30">
+                <span>Paulo Buan</span>
+            </div>
             <button class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
                 <span class="hamburger__line"></span>
                 <span class="hamburger__line"></span>
@@ -80,10 +100,30 @@
         
         <div class="mobile-menu" role="menu">
             <ul class="mobile-menu__links">
-                <li><a href="#about" class="mobile-menu__link" role="menuitem">About</a></li>
-                <li><a href="#interests" class="mobile-menu__link" role="menuitem">Interests</a></li>
-                <li><a href="#projects" class="mobile-menu__link" role="menuitem">Projects</a></li>
-                <li><a href="#contact" class="mobile-menu__link" role="menuitem">Contact</a></li>
+                <li><a href="#about" class="mobile-menu__link" role="menuitem">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 7.5V9M15 10.5V22H13V16H11V22H9V10.5L15 10.5Z"/>
+                    </svg>
+                    About
+                </a></li>
+                <li><a href="#interests" class="mobile-menu__link" role="menuitem">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+                    </svg>
+                    Interests
+                </a></li>
+                <li><a href="#projects" class="mobile-menu__link" role="menuitem">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20,6C20.58,6 21.05,6.2 21.42,6.59C21.8,7 22,7.45 22,8V19C22,19.55 21.8,20 21.42,20.41C21.05,20.8 20.58,21 20,21H4C3.42,21 2.95,20.8 2.58,20.41C2.2,20 2,19.55 2,19V8C2,7.45 2.2,7 2.58,6.59C2.95,6.2 3.42,6 4,6H8V4C8,3.42 8.2,2.95 8.58,2.58C8.95,2.2 9.42,2 10,2H14C14.58,2 15.05,2.2 15.42,2.58C15.8,2.95 16,3.42 16,4V6H20M4,8V19H20V8H4M10,4V6H14V4H10Z"/>
+                    </svg>
+                    Projects
+                </a></li>
+                <li><a href="#contact" class="mobile-menu__link" role="menuitem">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20,4H4A2,2 0 0,0 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6A2,2 0 0,0 20,4M20,18H4V8L12,13L20,8V18M20,6L12,11L4,6H20Z"/>
+                    </svg>
+                    Contact
+                </a></li>
             </ul>
         </div>
     </nav>
@@ -148,8 +188,7 @@
                 <div class="about__text-content">
                     <p class="about__text">
                         I am Paulo Buan, a dedicated individual with a passion for technology and gaming. 
-                        Currently pursuing a degree in computer science at Mapua MCL, I also hold the position 
-                        of Vice President at JPCS. As a collegiate gamer, I find joy in navigating both the 
+                        Currently pursuing a degree in computer science at Mapua MCL. As a collegiate gamer, I find joy in navigating both the 
                         digital landscapes of gaming and the intricate world of coding.
                     </p>
                     <p class="about__text">
@@ -167,7 +206,7 @@
                             </svg>
                         </div>
                         <h3 class="stat-card__title">Achievements</h3>
-                        <p class="stat-card__description">Dean's Lister at Mapua MCL<br>JPCS Vice President 2022-2023</p>
+                        <p class="stat-card__description">Dean's Lister at Mapua MCL</p>
                     </div>
                     
                     <div class="stat-card">
