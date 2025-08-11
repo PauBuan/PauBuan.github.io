@@ -5,8 +5,8 @@
   position: fixed;
   top: 20px;
   right: 20px;
-  z-index: var(--z-navigation);
-  background: var(--background-secondary);
+  z-index: 1000;
+  background: var(--background-primary);
   border: 2px solid var(--border-light);
   border-radius: var(--radius-full);
   width: 50px;
@@ -16,12 +16,18 @@
   justify-content: center;
   cursor: pointer;
   transition: all var(--transition-base);
-  box-shadow: 0 4px 12px var(--shadow-light);
+  box-shadow: 0 4px 12px var(--shadow-medium);
+  backdrop-filter: blur(10px);
 }
 
 .theme-toggle:hover {
   transform: scale(1.1);
   box-shadow: 0 6px 20px var(--shadow-medium);
+  border-color: var(--accent-crimson);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
 }
 
 .theme-toggle svg {
@@ -29,6 +35,18 @@
   height: 24px;
   color: var(--text-primary);
   transition: all var(--transition-base);
+}
+
+/* Ensure visibility in both themes */
+[data-theme="dark"] .theme-toggle {
+  background: var(--dark-bg-secondary);
+  border-color: var(--dark-border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  border-color: var(--accent-crimson);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
 }
 
 /* Dark mode specific adjustments */
@@ -77,6 +95,14 @@
   border-top: 1px solid var(--dark-border);
 }
 
+[data-theme="dark"] .hamburger:hover {
+  background: var(--dark-bg-secondary);
+}
+
+[data-theme="dark"] .hamburger__line {
+  background-color: var(--dark-text-primary);
+}
+
 [data-theme="dark"] .btn--primary {
   background: var(--accent-crimson);
   color: var(--primary-white);
@@ -106,17 +132,44 @@
   border-top: 1px solid var(--dark-border);
 }
 
+[data-theme="dark"] .footer__link {
+  color: var(--dark-text-secondary);
+}
+
+[data-theme="dark"] .footer__link:hover {
+  color: var(--accent-crimson);
+}
+
+[data-theme="dark"] .footer__copyright {
+  color: var(--dark-text-light);
+}
+
 /* Mobile theme toggle adjustments */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   .theme-toggle {
-    top: 15px;
+    top: 80px;
     right: 15px;
     width: 45px;
     height: 45px;
+    z-index: 999;
   }
   
   .theme-toggle svg {
     width: 20px;
     height: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .theme-toggle {
+    top: 85px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .theme-toggle svg {
+    width: 18px;
+    height: 18px;
   }
 }

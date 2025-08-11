@@ -158,13 +158,27 @@
   cursor: pointer;
   padding: var(--spacing-sm);
   transition: all var(--transition-base);
+  background: transparent;
+  border: none;
+  z-index: 1001;
+  position: relative;
+  min-width: 40px;
+  min-height: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.hamburger:hover {
+  background: var(--background-secondary);
+  border-radius: var(--radius-sm);
 }
 
 .hamburger__line {
   width: 25px;
-  height: 2px;
+  height: 3px;
   background-color: var(--text-primary);
   transition: all var(--transition-base);
+  border-radius: 2px;
 }
 
 .hamburger.active .hamburger__line:nth-child(1) {
@@ -182,24 +196,29 @@
 /* Mobile Menu */
 .mobile-menu {
   position: fixed;
-  top: 100%;
+  top: 80px;
   left: 0;
   width: 100%;
   height: calc(100vh - 80px);
   background-color: var(--background-primary);
-  z-index: var(--z-overlay);
+  z-index: 1000;
   transition: all var(--transition-base);
-  transform: translateY(0);
+  transform: translateX(-100%);
   opacity: 0;
   visibility: hidden;
   backdrop-filter: blur(10px);
-  box-shadow: 0 -4px 20px var(--shadow-medium);
+  box-shadow: 0 4px 20px var(--shadow-medium);
 }
 
 .mobile-menu.active {
-  transform: translateY(-100%);
+  transform: translateX(0);
   opacity: 1;
   visibility: visible;
+}
+
+/* Prevent body scroll when mobile menu is open */
+body.menu-open {
+  overflow: hidden;
 }
 
 .mobile-menu__links {

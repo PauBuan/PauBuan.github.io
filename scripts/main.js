@@ -109,10 +109,27 @@ class PortfolioApp {
 
     // Mobile menu toggle
     if (mobileMenuToggle && mobileMenu) {
-      mobileMenuToggle.addEventListener('click', () => {
+      mobileMenuToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Hamburger clicked'); // Debug log
         mobileMenuToggle.classList.toggle('active');
         mobileMenu.classList.toggle('active');
         document.body.classList.toggle('menu-open');
+        
+        // Update aria-expanded for accessibility
+        const isExpanded = mobileMenu.classList.contains('active');
+        mobileMenuToggle.setAttribute('aria-expanded', isExpanded);
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!mobileMenuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+          mobileMenuToggle.classList.remove('active');
+          mobileMenu.classList.remove('active');
+          document.body.classList.remove('menu-open');
+          mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        }
       });
     }
 
