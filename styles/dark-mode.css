@@ -5,7 +5,7 @@
   position: fixed;
   top: 20px;
   right: 20px;
-  z-index: 1000;
+  z-index: 1500;
   background: var(--background-primary);
   border: 2px solid var(--border-light);
   border-radius: var(--radius-full);
@@ -147,22 +147,27 @@
 /* Mobile theme toggle adjustments */
 @media screen and (max-width: 1024px) {
   .theme-toggle {
-    top: 80px;
+    top: 90px;
     right: 15px;
     width: 45px;
     height: 45px;
-    z-index: 999;
+    z-index: 1500;
   }
   
   .theme-toggle svg {
     width: 20px;
     height: 20px;
   }
+  
+  /* Ensure mobile nav is above theme toggle when menu is open */
+  .mobile-menu.active ~ .theme-toggle {
+    z-index: 999;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .theme-toggle {
-    top: 85px;
+    top: 95px;
     right: 15px;
     width: 40px;
     height: 40px;

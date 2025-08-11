@@ -134,6 +134,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 1.5rem;
+  position: relative;
+  z-index: 1999;
 }
 
 .mobile-nav__logo {
@@ -156,21 +158,28 @@
   flex-direction: column;
   gap: 4px;
   cursor: pointer;
-  padding: var(--spacing-sm);
+  padding: 8px;
   transition: all var(--transition-base);
   background: transparent;
   border: none;
-  z-index: 1001;
+  z-index: 2000;
   position: relative;
-  min-width: 40px;
-  min-height: 40px;
+  width: 48px;
+  height: 48px;
   justify-content: center;
   align-items: center;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .hamburger:hover {
   background: var(--background-secondary);
   border-radius: var(--radius-sm);
+}
+
+.hamburger:focus {
+  outline: 2px solid var(--accent-crimson);
+  outline-offset: 2px;
 }
 
 .hamburger__line {
@@ -179,6 +188,7 @@
   background-color: var(--text-primary);
   transition: all var(--transition-base);
   border-radius: 2px;
+  pointer-events: none;
 }
 
 .hamburger.active .hamburger__line:nth-child(1) {
@@ -201,7 +211,7 @@
   width: 100%;
   height: calc(100vh - 80px);
   background-color: var(--background-primary);
-  z-index: 1000;
+  z-index: 1800;
   transition: all var(--transition-base);
   transform: translateX(-100%);
   opacity: 0;
@@ -214,6 +224,16 @@
   transform: translateX(0);
   opacity: 1;
   visibility: visible;
+}
+
+/* Force mobile menu visibility when active */
+@media (max-width: 1200px) {
+  .mobile-menu.active {
+    display: block !important;
+    transform: translateX(0) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
 }
 
 /* Prevent body scroll when mobile menu is open */
@@ -260,17 +280,25 @@ body.menu-open {
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .navbar {
-    display: none;
+    display: none !important;
   }
   
   .mobile-nav {
-    display: block;
+    display: block !important;
   }
 }
 
 @media (max-width: 768px) {
+  .mobile-nav {
+    display: block !important;
+  }
+  
+  .navbar {
+    display: none !important;
+  }
+  
   .navbar__container {
     padding: var(--spacing-md) var(--spacing-lg);
   }

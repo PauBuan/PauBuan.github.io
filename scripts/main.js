@@ -107,19 +107,34 @@ class PortfolioApp {
     const mobileMenu = document.querySelector('.mobile-menu');
     const navLinks = document.querySelectorAll('.navbar__link, .mobile-menu__link');
 
+    console.log('Initializing navigation...'); // Debug
+    console.log('Mobile menu toggle found:', !!mobileMenuToggle);
+    console.log('Mobile menu found:', !!mobileMenu);
+
     // Mobile menu toggle
     if (mobileMenuToggle && mobileMenu) {
+      console.log('Setting up mobile menu event listener...');
+      
       mobileMenuToggle.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        console.log('Hamburger clicked'); // Debug log
-        mobileMenuToggle.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-        document.body.classList.toggle('menu-open');
+        console.log('Hamburger clicked!'); // Debug log
         
-        // Update aria-expanded for accessibility
-        const isExpanded = mobileMenu.classList.contains('active');
-        mobileMenuToggle.setAttribute('aria-expanded', isExpanded);
+        const isActive = mobileMenuToggle.classList.contains('active');
+        
+        if (isActive) {
+          mobileMenuToggle.classList.remove('active');
+          mobileMenu.classList.remove('active');
+          document.body.classList.remove('menu-open');
+          mobileMenuToggle.setAttribute('aria-expanded', 'false');
+          console.log('Menu closed');
+        } else {
+          mobileMenuToggle.classList.add('active');
+          mobileMenu.classList.add('active');
+          document.body.classList.add('menu-open');
+          mobileMenuToggle.setAttribute('aria-expanded', 'true');
+          console.log('Menu opened');
+        }
       });
       
       // Close menu when clicking outside
@@ -131,6 +146,8 @@ class PortfolioApp {
           mobileMenuToggle.setAttribute('aria-expanded', 'false');
         }
       });
+    } else {
+      console.error('Mobile menu elements not found!');
     }
 
     // Smooth scrolling for navigation links
@@ -518,6 +535,26 @@ class ThemeManager {
 // Initialize the portfolio app when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   new PortfolioApp();
+  
+  // Fallback mobile menu handler
+  const hamburger = document.querySelector('.hamburger');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  
+  if (hamburger && mobileMenu) {
+    console.log('Setting up fallback hamburger handler...');
+    
+    hamburger.addEventListener('touchstart', (e) => {
+      console.log('Touch start on hamburger');
+    });
+    
+    hamburger.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      console.log('Touch end on hamburger - toggling menu');
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      document.body.classList.toggle('menu-open');
+    });
+  }
 });
 
 function createConfetti() {
@@ -568,5 +605,26 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+// Global function for mobile menu toggle (fallback)
+function toggleMobileMenu() {
+  console.log('toggleMobileMenu called');
+  const hamburger = document.querySelector('.hamburger');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  
+  if (hamburger && mobileMenu) {
+    console.log('Toggling mobile menu...');
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    document.body.classList.toggle('menu-open');
+    
+    const isExpanded = mobileMenu.classList.contains('active');
+    hamburger.setAttribute('aria-expanded', isExpanded);
+    console.log('Menu is now:', isExpanded ? 'open' : 'closed');
+  } else {
+    console.error('Mobile menu elements not found in toggleMobileMenu');
+  }
+}
+
 // Expose functions globally for HTML onclick handlers
 window.playSurprise = playSurprise;
+window.toggleMobileMenu = toggleMobileMenu;
